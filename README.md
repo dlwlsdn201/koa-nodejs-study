@@ -169,6 +169,34 @@
      $yarn start
      $yarn start:dev
      ```
+
+## REST API
+- 클라이언트가 DB에 데이터를 요청하고 응답을 받는 프로세스의 중간에서 전달자 역할을 하는 서버
+
+### HTTP Methods
+
+| Methods | Description |
+| --- | --- |
+| GET | 데이터를 조회할 때 사용. |
+| POST | 데이터 등록, 인증 작업 시 사용(PUT 보다 안전) |
+| DELETE | 데이터 삭제할 때 사용 |
+| PUT | 데이터를 수정(통째로 교체)할 때 사용 |
+| PATCH | 데이터의 특정필드를 수정할 때 사용 |
+
+### REST API 설계
+
+- REST API 을 설계할 때는 API 주소와 Method 에 따라 어떤 역할을 하는지 쉽게 파악할 수 있도록 작성해야함.
+- **예시** (블로그 포스트용 REST API)
+    
+    
+    | 종류 | 기능 |
+    | --- | --- |
+    | POST /posts | 포스트 작성 |
+    | GET /posts | 포스트 목록 조회 |
+    | GET /posts/:id | 특정 포스트 조회 |
+    | DELETE /posts/:id | 특정 포스트 삭제 |
+    | POST /posts/:id/comments | 특정 포스트에 덧글 등록 |
+    | DELETE /posts/:id/comments/:commentId | 특정 포소트의 특정 덧글 삭제 |
  ## Koa 프레임워크 사용하여 라우트 모듈화 하기
  (진행 전)
 

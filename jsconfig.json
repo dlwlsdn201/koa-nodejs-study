@@ -1,5 +1,5 @@
 {
   "compilerOptions": {
     "target": "es6" // 프로젝트에서 자동 import 기능 
-  }
+  },
 }
