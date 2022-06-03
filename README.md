@@ -198,10 +198,48 @@
     | POST /posts/:id/comments | 특정 포스트에 덧글 등록 |
     | DELETE /posts/:id/comments/:commentId | 특정 포소트의 특정 덧글 삭제 |
  ## Koa 프레임워크 사용하여 라우트 모듈화 하기
- (진행 전)
+ (진행 중)
 
 
+## 컨트롤러 파일 생성
+### 컨트롤러
 
+- `write, list, read, remove, replace, update` 등 라우트 처리 함수들만 모아놓은 파일
+
+### koa-bodyparser 라이브러리
+
+- POST/PUT/PATCH 같은 메서드의 Request Body에 JSON 형식으로 data를 넣어주면, 이를 parsing 하여 서버에서 사용할 수 있게 해주는 라이브러리
+    
+    ```bash
+    $yarn add koa-bodyparser
+    ```
+    
+- 사용 시, 주의할 점은 router 을 적용하는 코드의 윗부분에 정의해야함.
+    
+    ```jsx
+    // Bad
+    const Router = require('koa-router');
+    
+    const posts = new Router();
+    
+    const postsCtrl = require('./posts.ctrl');
+    (...)
+    ```
+    
+    ```jsx
+    // Good
+    const Router = require('koa-router');
+    
+    const postsCtrl = require('./posts.ctrl');
+    
+    const posts = new Router();
+    (...)
+    ```
+### exports.update() 와 exports.replace() 의 차이
+
+- 두 함수의 용도는 비슷하지만 구현 방식에는 차이가 있다.
+    - `update(PATCH)` : 기존 값은 유지하면서 새 값을 덮어씌움.
+    - `replace(PUT)` : Request Body로 받은 값이 id를 제외한 모든 값을 대체함.
 
 ># 참고
 - Prettier에서 관리하는 코드 스타일을 ESLint 에서 관리하지 않도록 하려면 `eslint-config-prettier` 라이브러리를 설치하여 적용한다.
