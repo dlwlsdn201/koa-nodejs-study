@@ -1,9 +1,13 @@
+require('dotenv').config();
 const Koa = require('koa');
 const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser');
 
+// 비구조화 할당을 통해 process.env 내부 값에 대한 reference 생성
+const { PORT } = process.env;
+console.log('PORT:', PORT);
 const app = new Koa();
 const router = new Router();
-const bodyParser = require('koa-bodyparser');
 
 // ---------622p 라우트 모듈화 ~
 
@@ -67,6 +71,7 @@ app.use(router.routes()).use(router.allowedMethods());
 //   ctx.body = 'hello world';
 // });
 
-app.listen(4000, () => {
-  console.log('Listening to port 4000');
+const port = PORT || 4000;
+app.listen(port, () => {
+  console.log('Listening to port %d', port);
 });
