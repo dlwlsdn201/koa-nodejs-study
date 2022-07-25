@@ -2,16 +2,27 @@ require('dotenv').config();
 const Koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
-
+const mongoose = require('mongoose');
+const api = require('./api');
 // 비구조화 할당을 통해 process.env 내부 값에 대한 reference 생성
-const { PORT } = process.env;
-console.log('PORT:', PORT);
+const { PORT, MONGO_URI } = process.env;
+
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((e) => {
+    console.error(e);
+  });
+
 const app = new Koa();
 const router = new Router();
 
 // ---------622p 라우트 모듈화 ~
-
-const api = require('./api');
 
 // 라우터 설정
 router.use('/api', api.routes()); // api 라우트 적용
