@@ -14,10 +14,10 @@
   },
   "devDependencies": {
     "eslint": "^8.11.0",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.19"
   },
   "scripts": {
-    "start": "node src",
-    "start:dev": "nodemon --watch src/ src/index.js"
+    "start": "node -r esm src",
+    "start:dev": "nodemon  --watch src/ -r esm src/index.js"
   }
 }
