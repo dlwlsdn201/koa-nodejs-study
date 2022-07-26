@@ -690,6 +690,91 @@
     ```
     
 - 이제 프로젝트에서 import/export 구문을 자유롭게 사용할 수 있다.
+
+### 모듈 자동완성 검색을 위한 jsconfig.json 환경 설정
+
+- 에디터에서 프로젝트의 src 디렉터리 내부에 있는 모듈을 자동완성으로 불러올려면 루트 디렉터리에 `jsconfig.json` 파일 생성 후, 아래와 같이 설정한다.
+    
+    ```json
+    {
+      "compilerOptions": {
+        "target": "es6", // 프로젝트에서 자동 import 기능 
+        "module": "ES2015"
+      },
+      "include": ["src/**/*"] // module 자동 완성 검색 경로
+    }
+    ```
+    
+
+### 데이터베이스의 Schema와 Model
+
+- mongoose 에는 **스키마**(schema)와 **모델**(model)이라는 개념이 있는데, 이 둘은 혼동되기 쉽다.
+    - **스키마(schema)** : collection 에 들어가는 문서 내부의 각 field가 **어떤 형식으로 되어 있는지 정의**하는 객체(object). (typescript에서 type, interface 와 비슷)
+    - **모델(model)** : 스키마를 사용하여 만드는 **instance**로서, DB 에서 실제 작업을 처리할 수 있는 함수들을 지니고 있는 객체(object)
+    
+    모델을 생성하려면, 스키마가 먼저 정의되어 있어야 한다.
+    
+
+- 스키마 생성하기
+    - 예시) 블로그 포스트 만들기
+        
+        
+        | 필드 이름 | 데이터 타입 | 설명 |
+        | --- | --- | --- |
+        | title | string | 제목 |
+        | body | string | 내용 |
+        | tags | [string] | 태그 목록 |
+        | publishedDate | Date | 작성 날짜 |
+        - **스키마, 모듈을 만들 때**는 mongoose 모듈의 각각 `Schema`,`model` 를 사용하여 정의한다.
+            
+            ```jsx
+            // src/models/post.js
+            
+            import mongoose from 'mongoose';
+            
+            const { Schema } = mongoose;
+            
+            const PostSchema = new Schema({
+              title: String,
+              body: String,
+              tags: [String], // 문자로 이루어진 배열
+              publisgedDate: {
+                type: Date,
+                default: Date.now, // 현재 날짜를 기본값으로 지정
+              },
+            });
+            
+            const Post = mongoose.model('Post', PostSchema);
+            export default Post;
+            ```
+            
+        - mongoose 의 `Schema`에서 지원하는 데이터 타입은 다음과 같다.
+            
+            
+            | 타입 | 설명 |
+            | --- | --- |
+            | String | 문자열 |
+            | Number | 숫자 |
+            | Date | 날짜 |
+            | Buffer | 파일을 담을 수 있는 버퍼 |
+            | Boolean | true / false |
+            | Mixed(Schema.Types.Mixed) | 어떤 데이터도 넣을 수 있는 형식 |
+            | ObjectId(Schema.Types.ObjectId) | 객체 ID. 주로 다른 객체 참조 시 사용 |
+            | Array | 배열 형태의 값으로 [<type>] 형태로 사용  |
+- mongoose의 **model()**
+    
+    ```jsx
+     mongoose.model(<Schema_name>, <Schema_object>)
+    ```
+    
+    - DB는 스키마 이름을 정해 주면 그 이름의 복수 형태로 DB에 Collection 이름을 생성한다. 
+    예를 들어, 스키마 이름을 Post 로 설정하면, 실제 DB에 만드는 Collection 이름은 posts 이다.
+    - MongoDB에서 Collection 이름을 만들 때, 권장되는 컨벤션은 구분자를 사용하지 않고 복수 형태로 사용하는 것인데, **이 컨벤션을 따르고 싶지 않다면** 아래의 코드처럼 세 번쨰 파라미터에 사용자가 원하는 이름을 입력해주면 된다.
+    (이 경우, 첫 번째 파라미터로 넣어 준 이름은 나중에 다른 스키마에서 현재 스키마를 참조해야 하는 상황에서 사용함)
+        
+        ```jsx
+        mongoose.model('Post', PostSchema, **'custom_book_collection'**);
+        ```
 ---
 # 참고
 - Prettier에서 관리하는 코드 스타일을 ESLint 에서 관리하지 않도록 하려면 `eslint-config-prettier` 라이브러리를 설치하여 적용한다.
@@ -712,4 +797,17 @@
           "no-console": "off"
         }
     }
+    ```
+
+---
+# Errors
+### [Error] zsh: command not found: nodemon
+
+- nodemon 라이브러리가 설치되어 있거나 재설치 하였음에도 불구하고 위와 같이 명령어를 찾을 수 없다는 에러가 발생할 때가 있다.
+- 이럴 때는 전역 설치를 하여 해결할 수 있다. (단, 기존에 nodemon 을 먼저 제거해야함)
+    
+    ```bash
+    $yarn global add nodemon
+    또는
+    $npm install -g nodemon
     ```
