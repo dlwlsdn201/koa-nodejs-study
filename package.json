@@ -13,11 +13,10 @@
     "mongoose": "^6.4.2"
   },
   "devDependencies": {
-    "eslint": "^8.11.0",
-    "nodemon": "^2.0.19"
+    "eslint": "^8.11.0"
   },
   "scripts": {
     "start": "node -r esm src",
-    "start:dev": "nodemon  --watch src/ -r esm src/index.js"
+    "start:dev": "nodemon --watch src/ -r esm src/index.js"
   }
 }
