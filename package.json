@@ -10,13 +10,14 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.1.1",
-    "mongoose": "^6.4.2"
+    "mongoose": "^6.4.2",
+    "nodemon": "^2.0.19"
   },
   "devDependencies": {
     "eslint": "^8.11.0"
   },
   "scripts": {
     "start": "node -r esm src",
-    "start:dev": "nodemon --watch src/ -r esm src/index.js"
+    "start:dev": "nodemon src/ -r esm src/index.js"
   }
 }
