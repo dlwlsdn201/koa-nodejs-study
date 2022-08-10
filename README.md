@@ -324,39 +324,39 @@
 >1. 로그인 후 Cloud - Atlas 경로에 들어와서 프로젝트를 생성해준다.
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F745b837b-b013-41e2-9839-3bcce7611df1%2FcreateProject.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F745b837b-b013-41e2-9839-3bcce7611df1%2FcreateProject.png)
-
+>
 > 2. 화면과 같이 build a Cluster로 Cluster를 생성합니다.
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F8641194d-61d2-4d71-8f99-c9d936231f59%2FbuildCluster.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F8641194d-61d2-4d71-8f99-c9d936231f59%2FbuildCluster.png)
-
+>
 >3. 아래의 화면 처럼 클러스터를 생성하기 전에 설정 화면이 나온다. 맨 하단에 Free 라고 적혀있는 상태로 생성한다
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fdb9f6be2-8dac-405a-b11a-1cbb6bfe7adc%2Fcluster.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fdb9f6be2-8dac-405a-b11a-1cbb6bfe7adc%2Fcluster.png)
-
+>
 >4. 아래와 같은 화면이 나오고 생성하는데 1-3 분정도 소요된다.
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F84f79aea-fa73-4c21-8974-3e8630e20dc5%2FclusterbeingCreated.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F84f79aea-fa73-4c21-8974-3e8630e20dc5%2FclusterbeingCreated.png)
-
+>
 >5. 클러스터 생성 완료 화면이다.
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F60de30a2-3c79-40fa-9270-c64c98386319%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.31.43.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F60de30a2-3c79-40fa-9270-c64c98386319%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.31.43.png)
-
+>
 >6. 이제 connect하기 위해 Connect를 눌러 whitelist IP 등록을 해준다
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fcc81fe86-0ce4-408a-a301-00e4f93ac42b%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.32.17.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fcc81fe86-0ce4-408a-a301-00e4f93ac42b%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.32.17.png)
 >
 >`Whitelist IP` 란 승인 된 컴퓨터 IP주소를 나열하여 현재 사용하는 컴퓨터와 상호 작용 할 수 있도록 필터링 하는 IP 이다.
-
+>
 >7. 이제 데이터 베이스에 접근 할 수 있는 사용자를 등록한다.
 >
 >Database Access 메뉴에 들어와 사용자를 생성을 해주면 된다.
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F4ab3179e-4ddf-4b10-91ca-8a196d268a40%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.08.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F4ab3179e-4ddf-4b10-91ca-8a196d268a40%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.08.png)
-
+>
 >8. 아래의 이미지는 사용자를 생성하는 등록 화면이다.
 >
 >![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F94372a15-a9e8-4c7a-a3e3-2f4d7eb7ca88%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.33.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F94372a15-a9e8-4c7a-a3e3-2f4d7eb7ca88%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.33.png)
-
+>
 >9. node 환경을 통해 연결<br/>
 >  Cluster 화면에서 Connect를 눌러 화면이 나오면 Connect your application 을 선택한다.
 >
@@ -416,236 +416,63 @@
 >          console.log('Listening to port %d', port);
 >        });
 >        ```
-        
 >11. `$yarn start 또는 $yarn dev` 명령어를 통해 연결 상태 확인
 >    ![image](https://user-images.githubusercontent.com/53039583/180771037-1b4b72b9-056a-4438-863d-52d55f8e03c3.png)
->
 
-- 자세히
-    
-    # mongoose를 이용한 MongoDB 연동하기
-    
-    ## 설명
-    
-    ### RDBMS 의 한계점
-    
-    - 데이터 스키마가 고정적임.
-    - 저장 및 관리해야할 Data가 많아질 수록 여러 컴퓨터에 분산시키는 것이 아닌, 해당 DB서버의 성능을 업그레이드 하는 방식으로 확장해줘야함. (확장성 ↓)
-    
-    ### MongoDB 의 장점
-    
-    - 유동적인 스키마
-    - 서버의 data가 늘어나도 여러 컴퓨터로 분산 처리할 수 있도록 확장하기 쉽게 설계되어 있음.
-    
-    ### RDBMS, MongoDB는 어떨 때 사용해야할까?
-    
-    - data 구조가 빈번하게 바뀔 경우 → MongoDB
-    - 엄격한 조건으로 data filtering 이 필요하거나, ACID 특성을 준수해야할 경우 → RDBMS
-    
-    ### 문서(document)
-    
-    - 한 개 이상의 [key-value] 쌍으로 이루어져 있는 MongoDB의 데이터 구조.
-    - BSON(Binary JSON) 형태로 저장됨
-    - RDBMS 에서 레코드와 비슷한 개념
-    
-    ### 컬렉션(Collection)
-    
-    - 여러 문서들이 들어있는 곳
-    - RDBMS에서 테이블과 비슷한 개념
-    
-    ### MongoDB의 구조
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/013cb29a-2257-4db6-81cd-8474d1f83a1f/Untitled.png)
-    
-    ## 환경 및 설치
-    
-    ### 라이브러리 설치
-    
-    - `**mongoose`** : Node.js 환경에서 사용하는 MongoDB 기반 ODM(Object Data modeling) 라이브러리
-    - `**dotenv`** : 각 환경변수를 `.env` 확장자를 가진 파일에 저장해 두고 서버가 구동될 때 이 파일을 읽어 해당 값을 환경변수로 설정해 주는 기능을 제공해주는 라이브러리
-        
-        ```bash
-        $yarn add mongoose dotenv
-        ```
-        
-    
-    ### 환경변수 파일 생성
-    
-    - 계정 및 비밀번호 등 코드 안에 직접 작성하기에는 민감하거나 환경별로 달라질 수 있는 값들을 환경변수로 대신 관리할 수 있다.
-    - 환경변수에는 서버에서 사용할 Port 와 MongoDB 주소를 넣어준다.
-    - .env 파일은 프로젝트의 root path에 생성한다.
-        
-        ```
-        // .env
-        
-        PORT=4000
-        MONGO_URL=<mongoDB URL>
-        ```
-        
-    
-    ### mongoDB 설치하기
-    
-    1. Mac 터미널에서 Homebrew 패키지 관리자를 이용하여 mongosh을 설치한다.
-        
-        ```bash
-        $brew install mongosh
-        ```
-        
-    2. 터미널에 mongosh 명령어를 통해 mongoDB 클러스터와 연결한다.
-        
-        ```bash
-        $mongosh "mongodb+[mongoDB 클러스터 url]" --apiVersion 1 --username [유저명]
-        ```
-        
-    3. mongoDB 클러스터 생성 시, 설정했던 계정 암호를 입력하여 접속한다.
-        
-        ![스크린샷 2022-07-25 19.42.03.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7967e2be-e0be-4dda-af4c-5c1a21c1ef9e/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-07-25_19.42.03.png)
-        
-    
-    ### MongoDB Cloud Cluster 에 연결하기
-    
-    1. 로그인 후 Cloud - Atlas 경로에 들어와서 프로젝트를 생성해준다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F745b837b-b013-41e2-9839-3bcce7611df1%2FcreateProject.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F745b837b-b013-41e2-9839-3bcce7611df1%2FcreateProject.png)
-    
-    2. 화면과 같이 build a Cluster로 Cluster를 생성합니다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F8641194d-61d2-4d71-8f99-c9d936231f59%2FbuildCluster.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F8641194d-61d2-4d71-8f99-c9d936231f59%2FbuildCluster.png)
-    
-    3. 아래의 화면 처럼 클러스터를 생성하기 전에 설정 화면이 나온다. 맨 하단에 Free 라고 적혀있는 상태로 생성한다
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fdb9f6be2-8dac-405a-b11a-1cbb6bfe7adc%2Fcluster.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fdb9f6be2-8dac-405a-b11a-1cbb6bfe7adc%2Fcluster.png)
-    
-    4. 아래와 같은 화면이 나오고 생성하는데 1-3 분정도 소요된다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F84f79aea-fa73-4c21-8974-3e8630e20dc5%2FclusterbeingCreated.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F84f79aea-fa73-4c21-8974-3e8630e20dc5%2FclusterbeingCreated.png)
-    
-    5. 클러스터 생성 완료 화면이다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F60de30a2-3c79-40fa-9270-c64c98386319%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.31.43.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F60de30a2-3c79-40fa-9270-c64c98386319%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.31.43.png)
-    
-    6. 이제 connect하기 위해 Connect를 눌러 whitelist IP 등록을 해준다
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fcc81fe86-0ce4-408a-a301-00e4f93ac42b%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.32.17.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fcc81fe86-0ce4-408a-a301-00e4f93ac42b%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.32.17.png)
-    
-    `Whitelist IP` 란 승인 된 컴퓨터 IP주소를 나열하여 현재 사용하는 컴퓨터와 상호 작용 할 수 있도록 필터링 하는 IP 이다.
-    
-    7. 이제 데이터 베이스에 접근 할 수 있는 사용자를 등록한다.
-    
-    Database Access 메뉴에 들어와 사용자를 생성을 해주면 된다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F4ab3179e-4ddf-4b10-91ca-8a196d268a40%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.08.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F4ab3179e-4ddf-4b10-91ca-8a196d268a40%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.08.png)
-    
-    8. 아래의 이미지는 사용자를 생성하는 등록 화면이다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F94372a15-a9e8-4c7a-a3e3-2f4d7eb7ca88%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.33.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F94372a15-a9e8-4c7a-a3e3-2f4d7eb7ca88%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%206.35.33.png)
-    
-    9. node 환경을 통해 연결
-    
-    Cluster 화면에서 Connect를 눌러 화면이 나오면 Connect your application 을 선택한다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F43a56076-bda2-4b5a-b0f7-cf3dc2ebc7fe%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.32.08.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2F43a56076-bda2-4b5a-b0f7-cf3dc2ebc7fe%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.32.08.png)
-    
-    connection code를 `copy` 해준다.
-    
-    ![https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fa5a57084-c340-4f76-8537-16bc73741783%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.32.15.png](https://velog.velcdn.com/images%2Frun_dev_aiden%2Fpost%2Fa5a57084-c340-4f76-8537-16bc73741783%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202020-09-09%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.32.15.png)
-    
-    1. Node.js 의 server 스크립트 파일에서 환경변수를 통해 mongoDB 설정을 한다.
-        - `.env`
-            
-            ```bash
-            PORT=4001
-            MONGO_URI=mongodb+srv://jwdev:hiedi2005!@cluster0.tas6jxp.mongodb.net/?retryWrites=true&w=majority
-            ```
-            
-        - `src/index.js`
-            
-            ```jsx
-            require('dotenv').config();
-            const Koa = require('koa');
-            const Router = require('koa-router');
-            const bodyParser = require('koa-bodyparser');
-            const mongoose = require('mongoose');
-            const api = require('./api');
-            // 비구조화 할당을 통해 process.env 내부 값에 대한 reference 생성
-            const { PORT, MONGO_URI } = process.env;
-            
-            mongoose
-              .connect(MONGO_URI, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-              })
-              .then(() => {
-                console.log('Connected to MongoDB');
-              })
-              .catch((e) => {
-                console.error(e);
-              });
-            
-            const app = new Koa();
-            const router = new Router();
-            
-            // ---------622p 라우트 모듈화 ~
-            
-            // 라우터 설정
-            router.use('/api', api.routes()); // api 라우트 적용
-            
-            // 라우터 적용 전에 bodyParser 적용
-            app.use(bodyParser());
-            
-            // app 인스턴스에 라우터 적용
-            app.use(router.routes()).use(router.allowedMethods());
-            
-            const port = PORT || 4000;
-            app.listen(port, () => {
-              console.log('Listening to port %d', port);
-            });
-            ```
-            
-    2. `$yarn start 또는 $yarn dev` 명령어를 통해 연결 상태 확인
-        ![image](https://user-images.githubusercontent.com/53039583/180772395-8a768906-371c-486f-bfbf-7fb5357d52b2.png)
+---
+  >## 사용
+  ### 환경변수 데이터 불러오기
+  
+  - 환경변수의 데이터들은 `process.env` 값을 통해 조회할 수 있다.
+      
+      ```jsx
+      // src/index.js 
+      
+      const { PORT } = process.env;
+      ```
+      
+  
+  ### mongoose로 서버와 데이터베이스 연결하기
+  
+  - 서버 — 데이터베이스 간 연결할 때는 mongoose 의 `connect()` 을 사용한다.
+      
+      ```jsx
+      // src/index.js  -- server 메인 스크립트 파일
+      
+      + const { MONGO_URI } = process.env;
+      
+      + const mongoose = require('mongoose');
+      
+      + mongoose.connect(MONGO_URI, {
+      +    useNewUrlParser: true,
+      +    useUnifiedTopology: true,
+      +  })
+      +  .then(() => {
+      +    console.log('Connected to MongoDB');
+      +  })
+      +  .catch((e) => {
+      +    console.error(e);
+      +  });
+      ```
+      
+  - 위의 코드를 추가한 후 서버를 실행했을 때, 아래와 같은 결과가 출력되면 성공적으로 연결된 것이다.
+  ![image](https://user-images.githubusercontent.com/53039583/180772247-a6574f11-e18b-4f0c-84f7-47bf5ad44fb5.png)
 
-
-        
+### mongoDB Cluster 와 Studio 3T GUI 툴을 연결하기
+1. Studio 3T 툴 프로그램을 설치한다.
+2. Studio 3T 실행 후, 좌측 상단에 [Connect] 버튼을 클릭한다.
     
-    ## 사용
+    ![image](https://user-images.githubusercontent.com/53039583/183886727-6397bbd0-289c-4bbf-b556-6534794d7fc2.png)
     
-    ### 환경변수 데이터 불러오기
+3. [New Connection] 버튼을 클릭한다.
     
-    - 환경변수의 데이터들은 `process.env` 값을 통해 조회할 수 있다.
-        
-        ```jsx
-        // src/index.js 
-        
-        const { PORT } = process.env;
-        ```
-        
+    ![image](https://user-images.githubusercontent.com/53039583/183886749-976d5a94-f4e8-4c08-9e3e-134f00a3089a.png)
     
-    ### mongoose로 서버와 데이터베이스 연결하기
+4. 앞에서 복사했던 [mongoDB Cluster Connection string](https://www.notion.so/_22-c6c69f0dbf9f442398c9d884b98e7a32) 코드를 URL 입력 칸에 입력한다.
     
-    - 서버 — 데이터베이스 간 연결할 때는 mongoose 의 `connect()` 을 사용한다.
-        
-        ```jsx
-        // src/index.js  -- server 메인 스크립트 파일
-        
-        + const { MONGO_URI } = process.env;
-        
-        + const mongoose = require('mongoose');
-        
-        + mongoose.connect(MONGO_URI, {
-        +    useNewUrlParser: true,
-        +    useUnifiedTopology: true,
-        +  })
-        +  .then(() => {
-        +    console.log('Connected to MongoDB');
-        +  })
-        +  .catch((e) => {
-        +    console.error(e);
-        +  });
-        ```
-        
-    - 위의 코드를 추가한 후 서버를 실행했을 때, 아래와 같은 결과가 출력되면 성공적으로 연결된 것이다.
-    ![image](https://user-images.githubusercontent.com/53039583/180772247-a6574f11-e18b-4f0c-84f7-47bf5ad44fb5.png)
+    ![image](https://user-images.githubusercontent.com/53039583/183886764-db3a3f84-b02e-4c25-a669-12d90998a9a7.png)
+    
+5. DB 이름 및 유저명, 비밀번호 등을 설정한 후 연결한다.
 
 ### esm 라이브러리로 ES Module의 import/export 문법 사용하기
 
