@@ -602,6 +602,100 @@
         ```jsx
         mongoose.model('Post', PostSchema, **'custom_book_collection'**);
         ```
+### 데이터 생성하기 (POST)
+
+- POST 요청을 받아 `write() 함수를 호출하는 코드`를 posts/index.js 파일에 생성한다.
+    
+    ```jsx
+    // src/api/posts/index.js
+    
+    import Router from 'koa-router';
+    import * as postsCtrl from './posts.ctrl';
+    const posts = new Router();
+    
+    posts.post('/', postsCtrl.write);
+    ```
+    
+- POST 요청을 받아 실제로 데이터를 생성하는 `write()` 함수를 posts/ctrl.js 파일에 생성한다.
+    
+    ```jsx
+    // src/api/posts/posts.ctrl.js
+    
+    import Post from '../../models/post';
+    
+    export const write = async (ctx) => {
+      const { title, body, tags } = ctx.request.body;
+      const post = new Post({
+        title,
+        body,
+        tags,
+      });
+    
+      try {
+        await post.save(); // .save() : DB에 저장시키는 메서드 함수(return type: new Promise())
+        ctx.body = post;
+      } catch (e) {
+        ctx.throw(500, e);
+      }
+    };
+    ```
+    
+    - 포스트의 instance 를 만들 때는 `new` 키워드를 사용한다. 그리고 생성자 함수의 parameter에 데이터를 지닌 Object를 넣는다.
+    - instance를 만들면 바로 DB에 저장되는 것이 아니라 `save()` 메서드 함수를 실행시켜야 비로소 저장이 된다.
+    - 이 `save()` 함수의 반환 값 타입은 Promise 이므로 `async/await` 문법으로 DB 저장 요청을 완료할 때까지 await 를 사용하여 대기할 수 있다. (async/await 구문을 사용할 경우, 반드시 `try~catch` 구문으로 오류 예외 처리를 정의해야한다.)
+- 코드를 다 작성한 경우, postman 프로그램으로 아래와 같이 정보를 요청한다.
+    - Method : `POST`
+    - URL: `http://localhost:4001/api/posts`
+    - Body
+        
+        ```bash
+        {
+        	"title" : "리액트",
+        	"body": "라이브러리 종류",
+        	"tags": ["mongoose", "style-components", "scss"]
+        }
+        ```
+        
+- 결과
+    
+    ![image](https://user-images.githubusercontent.com/53039583/184119009-5a46ec10-80ae-4102-a62a-2890675623c7.png)
+    
+
+### 데이터 조회하기 (GET)
+
+- 데이터를 조회할 때는 model instance의 `find()` 메서드 함수를 사용한다.
+- `find()`  메서드 함수를 호출한 후에는 `exec()` 를 붙여줘야 server로 query를 요청한다.
+- GET 요청을 받아 `list() 함수를 호출하는 코드`를 posts/index.js 파일에 생성한다.
+    
+    ```jsx
+    // src/api/posts/index.js
+    
+    /**
+     * @desc find() 함수를 호출한 후는 exec() 를 붙여 주어야 서버에 query를 요청함.
+     * @param {object} ctx
+     */
+    export const list = async (ctx) => {
+      try {
+        const posts = await Post.find().exec();
+        ctx.body = posts;
+      } catch (error) {
+        ctx.throw(500, error);
+      }
+    };
+    ```
+    
+- postman 프로그램으로 아래와 같이 정보를 요청한다.
+    - Method : `GET`
+    - URL: `http://localhost:4001/api/posts`
+    - Param
+        
+        ```jsx
+        {}
+        ```
+        
+- 결과
+    
+    ![image](https://user-images.githubusercontent.com/53039583/184119027-85f19de1-2e99-4a0f-94cb-1572270f3183.png)
 ---
 # 참고
 - Prettier에서 관리하는 코드 스타일을 ESLint 에서 관리하지 않도록 하려면 `eslint-config-prettier` 라이브러리를 설치하여 적용한다.
