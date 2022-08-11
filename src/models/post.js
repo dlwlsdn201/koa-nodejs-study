@@ -24,5 +24,11 @@ const PostSchema = new Schema({
   },
 });
 
+/**
+  mongoose의 model() Syntax ->  mongoose.model(<Schema_name>,  <Schema_object> )
+    : DB는 스키마 이름을 정해 주면 그 이름의 복수 형태로 DB에 Collection 이름을 생성한다.
+        예를 들어, 스키마 이름을 Post 로 설정하면, 실제 DB에 만드는 Collection 이름은 posts 이다.
+ */
+
 const Post = mongoose.model('Post', PostSchema);
 export default Post;
