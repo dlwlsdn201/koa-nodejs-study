@@ -59,4 +59,25 @@ export const remove = async (ctx) => {
     ctx.throw(500, error)
   }
 };
-export const update = (ctx) => {};
+
+/**
+ * PATCH /api/posts/:id
+ * @desc 특정 id에 대한 포스트의 데이터를 ctx.request.body 로 업데이트 
+ * @param {object} ctx 
+ */
+export const update = async (ctx) => {
+  const { id } = ctx.params;
+  try {
+    const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
+      new: true, // 업데이트된 데이터 반환 여부 (false 일 때는 업데이트 되기 전 데이터를 반환함.)
+    }).exec();
+
+    if (!post) {
+      ctx.status = 404;
+      return;
+    }
+    ctx.body = post;
+  } catch (error) {
+    ctx.throw(500, error);
+  }
+};
