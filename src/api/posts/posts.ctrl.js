@@ -1,4 +1,17 @@
 import Post from '../../models/post';
+import mongoose from 'mongoose';
+
+// 요청 ObjectId 유효성 검증 미들웨어 함수
+const { ObjectId } = mongoose.Types;
+export const checkObjectId = (ctx, next) => {
+  const { id } = ctx.params;
+  if (!ObjectId.isValid(id)) {
+    ctx.status = 400; // Bad Request (클라이언트 측에서 보낸 파라미터가 유효하지 않을 때)
+    return;
+  }
+
+  return next();
+};
 
 export const write = async (ctx) => {
   const { title, body, tags } = ctx.request.body;
@@ -36,6 +49,7 @@ export const read = async (ctx) => {
   const { id } = ctx.params;
   try {
     const post = await Post.findById(id).exec();
+    console.log('posts:', post);
     if (!post) {
       ctx.status = 404; // Not found
       return;
