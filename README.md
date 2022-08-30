@@ -696,6 +696,153 @@
 - 결과
     
     ![image](https://user-images.githubusercontent.com/53039583/184119027-85f19de1-2e99-4a0f-94cb-1572270f3183.png)
+### 데이터 삭제하기 (DELETE)
+
+- 데이터를 삭제할 때는 아래와 같은 종류의 함수를 사용할 수 있다.
+    - `remove()` : 특정 조건을 만족하는 데이터를 모두 지운다.
+    - `findByIdAndRemove()` : id를 찾아서 지운다.
+    - `findOneAndRemove()` : 특정 조건을 만족하는 데이터 하나를 찾아서 제거한다.
+    
+- **findByIdAndRemove()**
+    
+    1) 아래에 표시되어 있는 DB 컬렉션의 데이터를 삭제해볼 것이다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187425048-89b2491e-ff4e-4868-afbd-80c41e234a0b.png)
+    2) 삭제할 함수를 정의한다.
+    
+    ```jsx
+    // src/api/posts/posts.ctrl.js
+    
+    export const remove = (ctx) => {
+      const { id } = ctx.params;
+      try {
+        await Post.findByIdAndRemove(id).exec();
+        ctx.status = 204; // No Content (성공은 했으나 응답할 데이터는 없음)
+      } catch (error) {
+        ctx.throw(500, error)
+      }
+    };
+    ```
+    
+    3) DELETE API 을 요청한다.
+    
+    - 여기서, `id` 값을 Params에 따로 선언하지 않고, url 에 바로 입력해도 작동하는 이유는 `src/api/posts/index.js` 에서 post.delete 에 대한 url 정의에 `/:id`  형태로 파라미터를 선언해주었기 때문이다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187425068-0e3e4c06-f049-402d-96ab-0e5bfeea77a3.png)
+
+    
+    4) 다시 GET API 로 조회해보면 데이터가 삭제된 것을 확인할 수 있다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187425092-d677b02f-4d90-4087-a159-fa4bd57e0ce4.png)
+    
+
+### 데이터 수정하기 (PATCH)
+
+- 데이터를 업데이트할 때는  `findByIdAndUpdate()` 함수를 사용하는데, 파라미터는 총 세 가지가 있다.
+    - arg1 : `id`
+    - arg2 : `업데이트 내용`
+    - arg3 : `업데이트 옵션`
+    
+    1) 아래의 컬렉션 데이터를 수정해볼 것이다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187425107-e705eef3-9d38-41c0-bb33-d84af3f57f5e.png)
+    
+    2) update 함수를 구현한다.
+    
+    ```jsx
+    // src/api/posts/posts.ctrl.js
+    
+    export const update = async (ctx) => {
+      const { id } = ctx.params;
+      try {
+        const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
+          new: true, // 업데이트된 데이터 반환 여부 (false 일 때는 업데이트 되기 전 데이터를 반환함.)
+        }).exec();
+    
+        if (!post) {
+          ctx.status = 404;
+          return;
+        }
+        ctx.body = post;
+      } catch (error) {
+        ctx.throw(500, error);
+      }
+    };
+    ```
+    
+    3) PATCH API 로 수정할 필드와 데이터를 `Body` 에 실어서 보낸다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187425130-bd009ed4-5fb2-4d38-9c9f-6655462ac31b.png)
+    
+    4) DB 의 데이터가 업데이트 된 것을 확인할 수  있다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187425162-ddd46ab8-e85c-4a4d-8285-c756f316bcd6.png)
+    
+
+## 요청 검증하기
+
+### ObjectId 검증
+
+- 보통 Error 500 오류는 서버에서 별도로 처리하지 않아 내부적으로 문제가 생겼을 때 발생한다.
+- 클라이언트 측에서 잘못된 객체 Id 를 전달했다면 400 Bad Request 오류를 띄워주는 것이 맞다. 그러기 위해서는 클라이언트 측에서 요청한 id값이 DB에서 유효한 ObjectId 인지 검증하는 방법이 필요하다.
+- 따라서, 유효성을 검증하는 미들웨어 함수를 아래와 같이 생성하여 처리할 수 있다.
+    
+    ```jsx
+    // src/api/posts/posts.ctrl.js
+    
+    import mongoose from 'mongoose';
+    
+    const { ObjectId } = mongoose.Types;
+    
+    // 요청 ObjectId 유효성 검증 미들웨어 함수
+    export const checkObjectId = (ctx, next) => {
+      const { id } = ctx.params;
+      if (!ObjectId.isValid(id)) {
+        ctx.status = 400; // Bad Request (클라이언트 측에서 보낸 파라미터가 유효하지 않을 때)
+        return;
+      }
+    
+      return next();
+    };
+    ```
+    
+    ```jsx
+    // src/api/posts/index.js
+    
+    import Router from 'koa-router';
+    import * as postsCtrl from './posts.ctrl';
+    const posts = new Router();
+    
+    posts.get('/', postsCtrl.list);
+    posts.post('/', postsCtrl.write);
+    
+    /**
+     * @desc 요청 ObjectId 유효성 검증 미들웨어 함수 적용 방법 2가지
+     방법 1) 코드 간결성 Bad & 라우트 경로 가독성 Good
+     방법 2) 코드 간결성 Good & 라우트 경로 가독성 Bad
+            (1) /api/posts/:id 경로를 위한 라우터를 새로 생성
+            (2) posts 에 해당 라우터를 등록
+     */
+    
+    // 방법 1) 
+    // post.get('/:id', postsCtrl.checkObjectId, postsCtrl.read);
+    // post.delete('/:id', postsCtrl.checkObjectId, postsCtrl.remove);
+    // post.patch('/:id', postsCtrl.checkObjectId, postsCtrl.update);
+    
+    // 방법 2)
+    const post = new Router(); // (1)      
+    post.get('/', postsCtrl.read); // (2)
+    post.delete('/', postsCtrl.remove);
+    post.patch('/', postsCtrl.update);
+    
+    posts.use('/:id', postsCtrl.checkObjectId, post.routes());
+    export default posts;
+    ```
+    
+- 유효하지 않은 `:id` 파라미터 값 (xxxxxxxxxxx) 을 넣어서 GET API 을 보내면, Bad Request 가 뜨는 것을 확인할 수 있다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187425190-025a26e3-6f37-457d-91f5-55bd9c3068f6.png)
+
 ---
 # 참고
 - Prettier에서 관리하는 코드 스타일을 ESLint 에서 관리하지 않도록 하려면 `eslint-config-prettier` 라이브러리를 설치하여 적용한다.
