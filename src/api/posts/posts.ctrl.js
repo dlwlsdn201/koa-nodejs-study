@@ -46,5 +46,17 @@ export const read = async (ctx) => {
   }
 };
 
-export const remove = (ctx) => {};
+/**
+ * @desc 특정 id 에 대한 포스트를 삭제
+ * @param {object} ctx 
+ */
+export const remove = async (ctx) => {
+  const { id } = ctx.params;
+  try {
+    await Post.findByIdAndRemove(id).exec();
+    ctx.status = 204; // No Content (성공은 했으나 응답할 데이터는 없음)
+  } catch (error) {
+    ctx.throw(500, error)
+  }
+};
 export const update = (ctx) => {};
