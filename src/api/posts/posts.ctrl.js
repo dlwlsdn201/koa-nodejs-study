@@ -99,6 +99,24 @@ export const remove = async (ctx) => {
  */
 export const update = async (ctx) => {
   const { id } = ctx.params;
+  // <Request Body 검증 구문 ----------
+  // write에서 사용한 schema와 비슷하지만 required() 메서드를 사용하지 않는다.
+  const schema = Joi.object().keys({
+    title: Joi.string(),
+    body: Joi.string(),
+    tags: Joi.array().items(Joi.string()),
+  });
+
+  // 검증하고 나서 검증 실패인 경우 Error 처리
+  const result = schema.validate(ctx.request.body);
+  if (result.error) {
+    ctx.status = 400; // Bad Request
+    ctx.body = result.error;
+    return;
+  }
+
+  //---------- Request Body 검증 구문>
+
   try {
     const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
       new: true, // 업데이트된 데이터 반환 여부 (false 일 때는 업데이트 되기 전 데이터를 반환함.)
