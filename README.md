@@ -867,6 +867,86 @@
     }
     ```
 
+## Request Body 검증
+
+- 이제 write, update API 에서 전달 받은 요청 내용을 검증하는 방법을 알아볼 것이다. 포스트를 작성할 때 Server는 `title, body, tags` 값을 모두 전달받아야 하며, 클라이언트가 값을 누락하여 보냈을 경우 400 Error 을 발생시켜야 한다.
+- 객체를 검증하기 위해 각 값을 `if문` 으로 비교하는 방법도 있지만, 더 수월하게 할 수 있도록 도와주는 `hapijs` 프레임워크의 `joi` 라이브러리를 사용해볼 것이다.
+    
+    ```bash
+    $yarn add @hapi/joi
+    ```
+    
+
+### 최초 생성 시, 사용되는 write API 에 대한 body 검증
+
+- write 함수에서 `joi` 라이브러리를 사용하여 요청 내용을 검증한다.
+    - `src/api/posts/posts.ctrl.js`
+        
+        ```jsx
+        import Joi from '@hapi/joi';
+        
+        export const write = async (ctx) => {
+        	// <Request Body 검증 구문 ----------
+        
+          const schema = Joi.object().keys({
+            // 객체가 다음 필드를 가지고 있음을 검증
+            title: Joi.string().required(), // required() 가 있으면 필수 항목
+            body: Joi.string().required(),
+            tags: Joi.array().items(Joi.string()).required(), // 문자열로 이루어진 배열 (:string[])
+          });
+        
+          // 검증하고 나서 검증 실패인 경우 Error 처리
+          const result = schema.validate(ctx.request.body);
+          if (result.error) {
+            ctx.status = 400; // Bad Request
+            ctx.body = result.error;
+            return;
+          }
+          //---------- Request Body 검증 구문>
+        
+        	(...)
+        }
+        ```
+        
+        Request Body 검증 구문을 작성 후,  `write API` body 에 title, body, tags 필드 중 하나를 누락시켜서 호출해보면, 400 Error 발생과 함께 오류 원인을 return 해준다.
+         (아래의 예시에서는 `“tags”` 라는 필드를 누락시켰다)
+        
+        ![image](https://user-images.githubusercontent.com/53039583/187900421-540ae73e-bc80-4416-a944-6b8eaa690d3d.png)
+        
+
+### 기존 데이터 업데이트 시, 사용되는 update API 에 대한 body 검증
+
+- update API 에 대한 body 검증은 write API 검증과 비슷하지만, `required()` 메서드가 사용되지 않는다.
+    
+    ```jsx
+    // src/api/posts/posts.ctrl.js
+    
+    export const update = async (ctx) => {
+    	(...)
+    	// <Request Body 검증 구문 ----------
+    	  // write에서 사용한 schema와 비슷하지만 required() 메서드를 사용하지 않는다.
+      const schema = Joi.object().keys({
+        title: Joi.string(),
+        body: Joi.string(),
+        tags: Joi.array().items(Joi.string()),
+      });
+    
+      // 검증하고 나서 검증 실패인 경우 Error 처리
+      const result = schema.validate(ctx.request.body);
+      if (result.error) {
+        ctx.status = 400; // Bad Request
+        ctx.body = result.error;
+        return;
+      }
+      //---------- Request Body 검증 구문>
+    	(...)
+    }
+    ```
+    
+    위의 코드처럼 검증 코드 구문을 작성한 후, `PATCH` method 로 update API 을 호출할 때 `title` 필드의 데이터를 number 타입으로 전달하면, 400 error 발생과 함께 발생 원인이 함께 출력되는 것을 확인할 수 있다.
+    
+    ![image](https://user-images.githubusercontent.com/53039583/187900446-c84cd890-900d-4cf9-8f72-8fd79ee12dcd.png)
+
 ---
 # Errors
 ### [Error] zsh: command not found: nodemon
