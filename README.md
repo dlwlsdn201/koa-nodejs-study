@@ -879,3 +879,5 @@
     또는
     $npm install -g nodemon
     ```
+
+- read me update
